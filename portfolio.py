@@ -18,7 +18,7 @@ def home(pages):
     st.header("DHANUSHKUMAR R")
     st.markdown("📞 +91 9600917002")
     st.markdown("✉️ danushidk507@gmail.com")
-    st.markdown("[💻LinkedIn](https://www.linkedin.com) | [🤖GitHub](https://github.com) | [📘Medium](https://medium.com)", unsafe_allow_html=True)
+    st.markdown("[💻LinkedIn](https://www.linkedin.com/in/dhanushkumar-r-datascience/) | [🤖GitHub](https://github.com/Idk507) | [📘Medium](https://medium.com/@danushidk507)", unsafe_allow_html=True)
 
     # Add navigation links to other pages
     st.sidebar.title("Navigate")
