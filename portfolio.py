@@ -1,12 +1,7 @@
 import streamlit as st
-import re
-
-
 
 # Function to display home page
-
-    
-def home():
+def home(pages):
     bg_img = "./anas-alshanti-feXpdV001o4-unsplash.jpg"
     st.markdown(
     f"""
@@ -17,13 +12,34 @@ def home():
     }}  
     </style>""",
     unsafe_allow_html=True)
+
     st.title("Dhanushkumar R's Portfolio")
     st.image("profile_picture.jpg")
     st.header("DHANUSHKUMAR R")
     st.markdown("📞 +91 9600917002")
     st.markdown("✉️ danushidk507@gmail.com")
     st.markdown("[💻LinkedIn](https://www.linkedin.com) | [🤖GitHub](https://github.com) | [📘Medium](https://medium.com)", unsafe_allow_html=True)
+
+    # Add navigation links to other pages
+    st.sidebar.title("Navigate")
+    selected_page = st.sidebar.radio("", pages)
     
+    # Render the selected page dynamically
+    if selected_page == "Education":
+        education()
+    elif selected_page == "Skills & Tools":
+        skills_and_tools()
+    elif selected_page == "Experience":
+        experience()
+    elif selected_page == "Certifications":
+        certifications()
+    elif selected_page == "Projects":
+        projects()
+    elif selected_page == "Honors & Awards":
+        honors_and_awards()
+    elif selected_page == "Interests":
+        interests()
+
 # Function to display education page
 def education():
     st.header("Education")
@@ -46,7 +62,6 @@ def skills_and_tools():
          🧠 ML Libraries: Numpy, Pandas, Scikit-learn  
          🤖 DL Libraries: TensorFlow, PyTorch
         """)
-
     with col2:
         st.header("Tools")
         st.markdown("""
@@ -59,6 +74,7 @@ def skills_and_tools():
          🧠 MNE-Python
         """)
 
+# Function to display experience pagedef experience():
 # Function to display experience page
 def experience():
     st.header("Experience")
@@ -137,18 +153,17 @@ def experience():
 
 # Function to display certifications page
 def certifications():
-    
     st.header("Certifications")
     certifications_text = """
-     Generative Ai - Google Cloud Skill Batch
+    Generative Ai - Google Cloud Skill Batch
     * IBM AI Engineer -Batch Certification
     * IBM Deep Learning Fundamentals - IBM
     * Tensorflow Developer Certification - Deeplearning.ai
     * Convolutional Neural Networks - Deeplearning.ai
     * Time Series Analysis - Imperial College
     * Natural Language Processing - Deep Learning.ai
-    * Machine Learning with Python - Cousera
-    * Data Visualization with Tableau - Cousera
+    * Machine Learning with Python - Coursera
+    * Data Visualization with Tableau - Coursera
     * Introduction to Nosql and Database - NewtonSchool
     * Deep Learning With Pytorch - IBM
     * Matlab Fundamentals Onramp - MathWorks
@@ -186,8 +201,6 @@ executed using a Bi LSTM model and an ML model, with evaluation metrics such as 
     st.markdown("""- Detected and counted number of bottles using YOLO v8 algorithm
     - Annotated model using LabelImg and Roboflow for custom dataset
     - Displayed real-time detection count on video feed""")
-
-# Function to display honors and awards page
 def honors_and_awards():
     st.header("Honors & Awards")
     # Include your honors and awards details here using st.markdown
@@ -214,23 +227,11 @@ def interests():
     for interest in interests:
         st.markdown(f"- {interest}")
 
-# Sidebar navigation
-pages = {
-    "Home": home,
-    "Education": education,
-    "Skills & Tools": skills_and_tools,
-    "Experience": experience,
-    "Certifications": certifications,
-    "Projects": projects,
-    "Honors & Awards": honors_and_awards,
-    "Interests": interests
-}
-
 # Streamlit app
 st.set_page_config(page_title="My Portfolio", page_icon=":briefcase:")
 
-# Sidebar navigation
-selected_page = st.sidebar.radio("Navigate", list(pages.keys()))
+# Define pages list
+pages_list = ["Home", "Education", "Skills & Tools", "Experience", "Certifications", "Projects", "Honors & Awards", "Interests"]
 
-# Render the selected page
-pages[selected_page]()
+# Render the home page
+home(pages_list)
